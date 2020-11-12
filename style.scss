@@ -1,0 +1,493 @@
+$ModerateViolet : #7541c8;
+$VeryDarkGrayishBlue : #48556a;
+$VeryDarkBlackishBlue: #19212e;
+$White: #ffffff;
+$LightGray: #cfcfcf;
+$LightGrayishBlue: #ecf2f8; // background 
+
+
+@mixin relativ($top,$left) {
+    position: relative;
+    top : $top;
+    left : $left;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+// start 
+
+body{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 13px;
+    @include relativ(0px,0px);
+    width: 100%; height: 100%;
+    background-color:  $LightGrayishBlue;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color : $LightGray;
+    
+}
+
+main{
+    @include relativ(11.4vw,0);
+    width: 69.5rem;
+    display: grid;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2rem;
+    // grid-template-rows: 17.4rem 17.4rem;
+    grid-template-rows: auto auto;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-areas: 
+    "daniel daniel jonathan kira" 
+    "harmon patrick patrick kira";
+
+
+    .grid_item{
+        opacity: 1;
+        @include relativ(0, 0);
+        padding: 1.2rem 1.90rem 1.2rem 1.90rem;
+        border-radius:.5rem;
+        box-shadow: 1rem 1rem 7rem -3.5rem $VeryDarkGrayishBlue;
+
+        .person {
+            @include relativ(0, 0);
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 2.3rem;
+            img {
+                width: 1.85rem; 
+                height: 1.85rem;
+                border-radius: 100px;
+            }
+
+            .person_name{
+                @include relativ(0, .9rem);
+                h3{
+                    font-size: .84rem;
+                    font-weight: 600;
+                    color : $White;
+                }
+                p{
+                    font-size: .7rem;
+                    opacity: 0.5;
+                }
+            }
+        }
+        .sector_h{
+            margin-top: .9rem;
+            font-size: .84rem;
+            font-weight: 600;
+            color: $White;
+            z-index: 2;
+        }
+        .sector_p{
+            // position: absolute; bottom: 1.8rem;
+            margin-top: 1.8rem;
+            font-size: .825rem;
+            line-height: 1.15rem;
+            opacity:  70%;
+        }
+    }
+    .grid_item:nth-child(1){
+        grid-area: daniel;
+        background-color: $ModerateViolet;
+        z-index: -1;
+        .quo{
+            position: absolute; top: 0rem; left: 66%;
+            z-index: -1;
+        }
+    }
+    .grid_item:nth-child(2){
+        background-color: $VeryDarkGrayishBlue;
+        grid-area: jonathan;
+    }
+    .grid_item:nth-child(3){
+        background-color: $White;
+        grid-area: harmon;
+        .sector_p{
+            margin-top: 1.5rem;
+            color: $VeryDarkGrayishBlue;
+        }
+        .sector_h{
+            color: $VeryDarkBlackishBlue;
+        }
+        .person {
+            .person_name{
+                h3{
+                    color: $VeryDarkBlackishBlue;
+                }
+                p{
+                    color: $VeryDarkGrayishBlue;
+                }
+            }
+        }
+    }
+    .grid_item:nth-child(4){
+        background-color: $VeryDarkBlackishBlue;
+        grid-area: patrick;
+        .sector_p{
+            margin-top: 1.4rem;
+        }
+    }
+    .grid_item:nth-child(5){
+        background-color: $White;
+        grid-area: kira;
+        .sector_p{
+            margin-top: 1.4rem;
+            color: $VeryDarkGrayishBlue;
+        }
+        .sector_h{
+            color: $VeryDarkBlackishBlue;
+        }
+        .person {
+            .person_name{
+                h3{
+                    color: $VeryDarkBlackishBlue;
+                }
+                p{
+                    color: $VeryDarkGrayishBlue;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1200px){
+    body{
+        padding-bottom: 20vw;
+    }
+    main{
+        @include relativ(10vw,0);
+        width: 85vw;
+        grid-row-gap: 2rem;
+        grid-column-gap: 2rem;
+        // grid-template-rows: 29vw 28vw 26vw;
+        grid-template-rows: auto auto auto;
+        // grid-template-rows: 22rem 20rem 19rem;
+        grid-template-columns: repeat(3,1fr);
+        grid-template-areas: 
+        "daniel daniel jonathan" 
+        "harmon patrick patrick"
+        "kira kira kira";
+        .grid_item{
+            padding: 2.5vw 2.5vw;
+            .person {
+                img {
+                    width: 3vw; 
+                    height: 3vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 1.2vw;
+                    }
+                    p{
+                        font-size: 1vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 1.2vw;
+                font-size: 1.5vw;
+            }
+            .sector_p{
+                margin-top: 2vw;
+                font-size: 1.43vw;
+                line-height: 2vw;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 2vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 2vw;
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 850px){
+    main{
+        width: 80vw;
+        grid-row-gap: 5vw;
+        grid-column-gap: 5vw;
+        grid-template-rows: auto auto auto auto;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-areas: 
+        "daniel daniel"
+        "harmon jonathan" 
+        "patrick patrick"
+        "kira kira";
+        .grid_item{
+            padding: 3vw;
+            .person {
+                img {
+                    width: 5vw; 
+                    height: 5vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 1.9vw;
+                    }
+                    p{
+                        font-size: 1.7vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 1.8vw;
+                font-size: 2.2vw;
+            }
+            .sector_p{
+                margin-top: 3.5vw;
+                font-size: 1.8vw;
+                line-height: 2.5vw;
+            }
+        }
+        .grid_item:nth-child(3){
+            .sector_p{
+                position: absolute; bottom: 3vw;
+                padding-right: 3vw;
+                margin-top:  0;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 3.5vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 3.5vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 700px){
+    main{
+        width: 90vw;
+        .grid_item{
+            padding: 3vw;
+            .person {
+                img {
+                    width: 5.5vw; 
+                    height: 5.5vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 2.4vw;
+                        letter-spacing: .1vw;
+                    }
+                    p{
+                        font-size: 2.2vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 2.2vw;
+                font-size: 2.6vw;
+            }
+            .sector_p{
+                margin-top: 4vw;
+                font-size: 2.4vw;
+                line-height: 3.2vw;
+            }
+        }
+        .grid_item:nth-child(3){
+            .sector_p{
+                position: absolute; bottom: 3vw;
+                padding-right: 3vw;
+                margin-top:  0;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 4vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 4vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 550px){
+    main{
+        width: 80vw;
+        grid-row-gap: 6vw;
+        grid-column-gap: 6vw;
+        grid-template-rows: repeat(5, auto);
+        grid-template-columns: repeat(1,1fr);
+        grid-template-areas: 
+        "daniel"
+        "jonathan" 
+        "harmon "
+        "patrick"
+        "kira";
+        .grid_item{
+            padding: 5vw;
+            .person {
+                img {
+                    width: 7vw; 
+                    height: 7vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 3.5vw;
+                        letter-spacing: .3vw;
+                    }
+                    p{
+                        font-size: 3.2vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 3vw;
+                font-size: 3.57vw;
+            }
+            .sector_p{
+                margin-top: 5vw;
+                font-size: 3.5vw;
+                line-height: 4.5vw;
+            }
+        }
+        .grid_item:nth-child(1){
+            .quo{
+                left: 50vw;
+            }
+        }
+        .grid_item:nth-child(3){
+            .sector_p{
+                position: relative; bottom: 0vw;
+                margin-top:  5vw;
+                padding-right: 0;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 5vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 5vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 450px){
+    main{
+        width: 90vw;
+        grid-gap: 8vw;
+        .grid_item{
+            .person {
+                img {
+                    width: 9vw; 
+                    height: 9vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 3.7vw;
+                        letter-spacing: .3vw;
+                    }
+                    p{
+                        font-size: 3.2vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 3.5vw;
+                font-size: 4.08vw;
+                line-height: 7vw;
+            }
+            .sector_p{
+                margin-top: 6vw;
+                font-size: 4vw;
+                line-height: 6vw;
+            }
+        }
+        .grid_item:nth-child(3){
+            .sector_p{
+                margin-top:  6vw;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 6vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 6vw;
+            }
+        }
+    }
+}
+@media only screen and (max-width: 300px){
+    main{
+        width: 93vw;
+        grid-gap: 10vw;
+        .grid_item{
+            padding: 7vw;
+            .person {
+                height: 12vw;
+                img {
+                    width: 12vw; 
+                    height: 12vw;
+                }
+                .person_name{
+                    h3{
+                        font-size: 5vw;
+                        letter-spacing: .4vw;
+                    }
+                    p{
+                        font-size: 4.8vw;
+                    }
+                }
+            }
+            .sector_h{
+                margin-top: 4vw;
+                font-size: 5.3vw;
+                line-height: 10vw;
+            }
+            .sector_p{
+                margin-top: 10vw;
+                font-size: 5.081vw;
+                line-height: 8vw;
+            }
+        }
+        .grid_item:nth-child(1){
+            .quo{
+                width: 40vw;
+                left: 30vw;
+            }
+        }
+        .grid_item:nth-child(3){
+            .sector_p{
+                margin-top:  10vw;
+            }
+        }
+        .grid_item:nth-child(4){
+            .sector_p{
+                margin-top: 10vw;
+            }
+        }
+        .grid_item:nth-child(5){
+            .sector_p{
+                margin-top: 10vw;
+            }
+        }
+    }
+}
